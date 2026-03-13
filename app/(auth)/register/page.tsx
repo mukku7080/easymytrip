@@ -5,15 +5,9 @@ import { FaChrome } from "react-icons/fa";
 import { FiUserPlus } from "react-icons/fi";
 import { LuBadgePercent } from "react-icons/lu";
 import { MdSecurity } from "react-icons/md";
-// import { auth, db } from "../../../firebase";
 import { toast } from "sonner";
-
-import { auth, db } from "@/firebase";
-import {
-    RecaptchaVerifier,
-    signInWithPhoneNumber,
-    ConfirmationResult,
-} from "firebase/auth";
+import { auth, db, googleProvider } from "@/firebase";
+import { RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, signInWithPopup } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 const Page = () => {
     const OTP_LENGTH = 6;
@@ -104,6 +98,32 @@ const Page = () => {
         }
     };
 
+
+    const loginWithGoogle = async () => {
+        try {
+            const result = await signInWithPopup(auth!, googleProvider);
+
+            const user = result.user;
+
+            toast.success("Login Successful 🎉");
+            await setDoc(
+                doc(db, "users", user.uid),
+                {
+                    uid: user.uid,
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL,
+                    createdAt: serverTimestamp(),
+                },
+                { merge: true }
+            );
+
+            console.log(user);
+
+        } catch (error: any) {
+            toast.error(error.message);
+        }
+    };
     return (
         <div className="w-full min-h-screen bg-background-500">
 
@@ -207,9 +227,9 @@ const Page = () => {
 
                         <hr className="my-8" />
 
-                        <button className="w-full border border-gray-300 py-3 rounded-md flex items-center justify-center gap-2">
+                            <button onClick={loginWithGoogle} className="w-full border border-gray-300 py-3 rounded-md flex items-center justify-center gap-2 text-primary-500 mb-3">
+                            <FaChrome className="text-primary-500" />
                             Continue with Google
-                            <FaChrome />
                         </button>
 
                         <div id="recaptcha-container"></div>

@@ -48,16 +48,17 @@ export const Navbar = () => {
                         className="text-sm  bg-white text-primary-500 px-3 py-1 rounded-md"
                         onClick={() => router.push("/login")}
                     >
-                        Sign in
+                        {/* Sign in */}
+                        Sign in or create an account
                     </button>
 
                     {/* Sign up */}
-                    <button
+                    {/* <button
                         className="text-sm bg-white text-primary-500 px-3 py-1 rounded-md"
                         onClick={() => router.push("/register")}
                     >
                         Sign up
-                    </button>
+                    </button> */}
 
                 </div>
             </div>
