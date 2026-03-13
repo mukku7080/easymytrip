@@ -30,6 +30,10 @@ const Page = () => {
         if (typeof window === "undefined") return;
 
         if (!(window as any).recaptchaVerifier) {
+            if (!auth) {
+                toast.error("Authentication service not available");
+                return;
+            }
             const verifier = new RecaptchaVerifier(
                 auth,
                 "recaptcha-container",
@@ -52,7 +56,7 @@ const Page = () => {
         try {
             const appVerifier = (window as any).recaptchaVerifier;
 
-            const result = await signInWithPhoneNumber(auth, phone, appVerifier);
+            const result = await signInWithPhoneNumber(auth!, phone, appVerifier);
 
             setConfirmationResult(result);
 
