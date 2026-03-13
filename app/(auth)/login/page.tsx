@@ -140,7 +140,7 @@ const LoginPage = () => {
                     <div className="flex-1">
 
                         <h1 className="text-3xl font-bold mb-6">
-                            Log in to manage your trips
+                            manage your trips
                         </h1>
 
                         <div className="flex flex-col gap-6">
@@ -239,11 +239,11 @@ const LoginPage = () => {
                     <div className="w-full md:w-[420px] bg-white p-10 rounded-lg border border-gray-200 shadow-lg">
 
                         <h2 className="text-2xl font-bold mb-2">
-                            Create account with mobile
+                          Sign in or create your Travelo account
                         </h2>
 
                         <p className="text-sm text-gray-500 mb-8">
-                            Register using your mobile number and verify with OTP.
+                           Sign in or create an account using your mobile number.
                         </p>
 
                         {/* Phone */}
@@ -308,12 +308,12 @@ const LoginPage = () => {
 
                         <div id="recaptcha-container"></div>
 
-                        {/* <p className="text-sm text-gray-500 text-center mt-4">
-                            Already have an account?
-                            <span className="text-primary-500 font-semibold ml-1 cursor-pointer">
+                        <p className="text-sm text-gray-500 text-center mt-4">
+                            We never share your phone number with anyone.
+                            {/* <span className="text-primary-500 font-semibold ml-1 cursor-pointer">
                                 Sign in
-                            </span>
-                        </p> */}
+                            </span> */}
+                        </p>
 
                     </div>
                 </div>
