@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { auth, db, googleProvider } from "@/firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult, signInWithPopup } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import PaymentButton from "@/components/Payment";
 
 
 const LoginPage = () => {
@@ -239,11 +240,11 @@ const LoginPage = () => {
                     <div className="w-full md:w-[420px] bg-white p-10 rounded-lg border border-gray-200 shadow-lg">
 
                         <h2 className="text-2xl font-bold mb-2">
-                          Sign in or create your Travelo account
+                            Sign in or create your Travelo account
                         </h2>
 
                         <p className="text-sm text-gray-500 mb-8">
-                           Sign in or create an account using your mobile number.
+                            Sign in or create an account using your mobile number.
                         </p>
 
                         {/* Phone */}
@@ -314,6 +315,7 @@ const LoginPage = () => {
                                 Sign in
                             </span> */}
                         </p>
+                        <PaymentButton />
 
                     </div>
                 </div>
